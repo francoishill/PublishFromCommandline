@@ -50,43 +50,57 @@ class Program
 
 			if (appname == null)
 				feedbackList.Add("Cannot publish, no appname specified (use command-line format app:\"my app name\")");
-			string versionString;
+			string tmpNoUserVersionString;
+			string tmpNoUseSetupPath;
 			if (local)
-				VisualStudioInterop.PerformPublish(
-					null,
-					appname,
-					false,
-					out versionString,
-					hasplugins,
-					true,
-					installlocal,
-					loadonstartup,
-					(sn, tf) => { feedbackList.Add(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + tf.FeedbackType + "} " + tf.FeedbackText)); },
-					selectsetup);
+				PublishInterop.PerformPublish(
+					//VisualStudioInterop.PerformPublish(
+					//null,
+					projName: appname,
+					_64Only: false,
+					HasPlugins: hasplugins,
+					AutomaticallyUpdateRevision: true,
+					InstallLocallyAfterSuccessfullNSIS: installlocal,
+					StartupWithWindows: loadonstartup,
+					SelectSetupIfSuccessful: selectsetup,
+					publishedVersionString: out tmpNoUserVersionString,
+					publishedSetupPath: out tmpNoUseSetupPath,
+					actionOnMessage: (mes, msgtype) =>
+					{
+						feedbackList.Add(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + msgtype + "} " + mes));
+						//MiniDownloadBarForm.UpdateMessage(textfeedback.FeedbackText, "Last feedback:" + textfeedback.FeedbackText);
+					},
+					actionOnProgressPercentage: (progperc) =>
+					{
+						//MiniDownloadBarForm.UpdateProgress(progperc);
+					});
 			else
 			{
 				//System.Windows.Forms.Application.EnableVisualStyles();
 				//MiniDownloadBarForm.UpdateMessage("Busy publishing app " + appname, null);
 
-				VisualStudioInterop.PerformPublishOnline(
-					null,
-					appname,
-					false,
-					hasplugins,
-					true,
-					loadonstartup,
-					(sn, textfeedback) =>
+				PublishInterop.PerformPublishOnline(
+				//VisualStudioInterop.PerformPublishOnline(
+					//null,
+					projName: appname,
+					_64Only: false,
+					HasPlugins: hasplugins,
+					AutomaticallyUpdateRevision: true,
+					InstallLocallyAfterSuccessfullNSIS: installlocal,
+					StartupWithWindows: loadonstartup,
+					SelectSetupIfSuccessful: selectsetup,
+					OpenWebsite: openwebsite,
+					publishedVersionString: out tmpNoUserVersionString,
+					publishedSetupPath: out tmpNoUseSetupPath,
+					actionOnMessage: (mes, msgtype) =>
 					{
-						feedbackList.Add("[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "[{" + textfeedback.FeedbackType + "} " + textfeedback.FeedbackText);
+						feedbackList.Add(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + msgtype + "} " + mes));
 						//MiniDownloadBarForm.UpdateMessage(textfeedback.FeedbackText, "Last feedback:" + textfeedback.FeedbackText);
 					},
-					(sn, progressfeedback) =>
+					actionOnProgressPercentage: (progperc) =>
 					{
-						//MiniDownloadBarForm.UpdateProgress((int)Math.Truncate(100 * ((double)progressfeedback.CurrentValue / (double)progressfeedback.MaximumValue)));
-					},
-					installlocal,
-					selectsetup,
-					openwebsite);
+						//MiniDownloadBarForm.UpdateProgress(progperc);
+					});
 
 				//MiniDownloadBarForm.CloseDownloadBar();
 			}
