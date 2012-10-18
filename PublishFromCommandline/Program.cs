@@ -17,11 +17,26 @@ class Program
 		return defaultIfNotFound;
 	}
 
+	private static List<string> feedbackList = new List<string>();
+	private static Action<string> onFeedback = (txt) =>
+	{
+		feedbackList.Add(txt);
+		Console.Out.WriteLine(txt);
+		Console.Out.Flush();
+	};
+
 	private const StringComparison culture = StringComparison.InvariantCultureIgnoreCase;
 	static int Main(string[] args)
 	{
-		List<string> feedbackList = new List<string>();
+		
 		string outputfile = null;
+
+		while (true)
+		{
+			onFeedback("Time: " + DateTime.Now.ToString("HH:mm:ss"));
+			Thread.Sleep(500);
+		}
+		return 0;
 
 		try
 		{
@@ -29,7 +44,8 @@ class Program
 			{
 				System.Windows.Forms.Application.EnableVisualStyles();
 				//UserMessages.ShowInfoMessage("Please enter arguments for PublishFromCommandLine.");
-				feedbackList.Add("No arguments for PublishFromCommandLine.");
+				//feedbackList.Add("No arguments for PublishFromCommandLine.");
+				onFeedback("No arguments for PublishFromCommandLine: " + Environment.CommandLine);
 				return 0;
 			}
 
@@ -49,7 +65,8 @@ class Program
 			outputfile = GetArgVal<string>(null, args, s => s.StartsWith("outputfile:"), s => s.Substring("outputfile:".Length));
 
 			if (appname == null)
-				feedbackList.Add("Cannot publish, no appname specified (use command-line format app:\"my app name\")");
+				onFeedback("Cannot publish, no appname specified (use command-line format app:\"my app name\")");
+				//feedbackList.Add("Cannot publish, no appname specified (use command-line format app:\"my app name\")");
 			string tmpNoUserVersionString;
 			string tmpNoUseSetupPath;
 			if (local)
@@ -67,7 +84,8 @@ class Program
 					publishedSetupPath: out tmpNoUseSetupPath,
 					actionOnMessage: (mes, msgtype) =>
 					{
-						feedbackList.Add(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + msgtype + "} " + mes));
+						onFeedback(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + msgtype + "} " + mes));
+						//feedbackList.Add(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + msgtype + "} " + mes));
 						//MiniDownloadBarForm.UpdateMessage(textfeedback.FeedbackText, "Last feedback:" + textfeedback.FeedbackText);
 					},
 					actionOnProgressPercentage: (progperc) =>
@@ -94,7 +112,8 @@ class Program
 					publishedSetupPath: out tmpNoUseSetupPath,
 					actionOnMessage: (mes, msgtype) =>
 					{
-						feedbackList.Add(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + msgtype + "} " + mes));
+						onFeedback(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + msgtype + "} " + mes));
+						//feedbackList.Add(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + msgtype + "} " + mes));
 						//MiniDownloadBarForm.UpdateMessage(textfeedback.FeedbackText, "Last feedback:" + textfeedback.FeedbackText);
 					},
 					actionOnProgressPercentage: (progperc) =>
