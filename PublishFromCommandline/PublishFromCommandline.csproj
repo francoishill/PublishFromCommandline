@@ -152,6 +152,9 @@
     <Compile Include="..\..\SharedClasses\NsisInterop.cs">
       <Link>NsisInterop.cs</Link>
     </Compile>
+    <Compile Include="..\..\SharedClasses\ProcessesInterop.cs">
+      <Link>ProcessesInterop.cs</Link>
+    </Compile>
     <Compile Include="..\..\SharedClasses\PublishInterop.cs">
       <Link>PublishInterop.cs</Link>
     </Compile>
