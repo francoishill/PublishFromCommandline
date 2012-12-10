@@ -101,6 +101,9 @@
     <Compile Include="..\..\SharedClasses\EncodeAndDecodeInterop.cs">
       <Link>EncodeAndDecodeInterop.cs</Link>
     </Compile>
+    <Compile Include="..\..\SharedClasses\EncryptionInterop.cs">
+      <Link>EncryptionInterop.cs</Link>
+    </Compile>
     <Compile Include="..\..\SharedClasses\EventHandlers.cs">
       <Link>EventHandlers.cs</Link>
     </Compile>
@@ -126,6 +129,9 @@
     <Compile Include="..\..\SharedClasses\InputBox.designer.cs">
       <Link>InputBox.designer.cs</Link>
       <DependentUpon>InputBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\LicensingInterop_Shared.cs">
+      <Link>LicensingInterop_Shared.cs</Link>
     </Compile>
     <Compile Include="..\..\SharedClasses\MiniDownloadBarForm.cs">
       <Link>MiniDownloadBarForm.cs</Link>
@@ -154,6 +160,9 @@
     </Compile>
     <Compile Include="..\..\SharedClasses\NsisInterop.cs">
       <Link>NsisInterop.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\PhpInterop.cs">
+      <Link>PhpInterop.cs</Link>
     </Compile>
     <Compile Include="..\..\SharedClasses\ProcessesInterop.cs">
       <Link>ProcessesInterop.cs</Link>
