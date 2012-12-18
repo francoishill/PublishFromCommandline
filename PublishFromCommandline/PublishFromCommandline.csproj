@@ -133,6 +133,9 @@
     <Compile Include="..\..\SharedClasses\LicensingInterop_Shared.cs">
       <Link>LicensingInterop_Shared.cs</Link>
     </Compile>
+    <Compile Include="..\..\SharedClasses\Logging.cs">
+      <Link>Logging.cs</Link>
+    </Compile>
     <Compile Include="..\..\SharedClasses\MiniDownloadBarForm.cs">
       <Link>MiniDownloadBarForm.cs</Link>
       <SubType>Form</SubType>
@@ -161,6 +164,9 @@
     <Compile Include="..\..\SharedClasses\NsisInterop.cs">
       <Link>NsisInterop.cs</Link>
     </Compile>
+    <Compile Include="..\..\SharedClasses\OwnAppsInterop.cs">
+      <Link>OwnAppsInterop.cs</Link>
+    </Compile>
     <Compile Include="..\..\SharedClasses\PhpInterop.cs">
       <Link>PhpInterop.cs</Link>
     </Compile>
@@ -172,6 +178,9 @@
     </Compile>
     <Compile Include="..\..\SharedClasses\ReflectionInterop.cs">
       <Link>ReflectionInterop.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\RegexInterop.cs">
+      <Link>RegexInterop.cs</Link>
     </Compile>
     <Compile Include="..\..\SharedClasses\RegistryInterop.cs">
       <Link>RegistryInterop.cs</Link>
