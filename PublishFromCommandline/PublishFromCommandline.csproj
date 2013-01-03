@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F9DBA3F7-2840-4F09-9960-B97D50D5D7B8}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PublishFromCommandline</RootNamespace>
     <AssemblyName>PublishFromCommandline</AssemblyName>
@@ -81,6 +81,9 @@
     <Compile Include="..\..\SharedClasses\AppTypeIndependant.cs">
       <Link>AppTypeIndependant.cs</Link>
     </Compile>
+    <Compile Include="..\..\SharedClasses\AutoUpdating.cs">
+      <Link>AutoUpdating.cs</Link>
+    </Compile>
     <Compile Include="..\..\SharedClasses\AutoUpdatingForm.cs">
       <Link>AutoUpdatingForm.cs</Link>
       <SubType>Form</SubType>
@@ -97,6 +100,9 @@
     </Compile>
     <Compile Include="..\..\SharedClasses\CompareObjects.cs">
       <Link>CompareObjects.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\DeveloperCommunication.cs">
+      <Link>DeveloperCommunication.cs</Link>
     </Compile>
     <Compile Include="..\..\SharedClasses\EncodeAndDecodeInterop.cs">
       <Link>EncodeAndDecodeInterop.cs</Link>
@@ -212,6 +218,10 @@
     <Compile Include="..\..\SharedClasses\TracXmlRpcInterop.cs">
       <Link>TracXmlRpcInterop.cs</Link>
     </Compile>
+    <Compile Include="..\..\SharedClasses\UnhandledExceptionsWindow.xaml.cs">
+      <Link>UnhandledExceptionsWindow.xaml.cs</Link>
+      <DependentUpon>UnhandledExceptionsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="..\..\SharedClasses\UploadingProtocolTypesEnum.cs">
       <Link>UploadingProtocolTypesEnum.cs</Link>
     </Compile>
@@ -295,6 +305,10 @@
     <EmbeddedResource Include="app.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="..\..\SharedClasses\UnhandledExceptionsWindow.xaml">
+      <Link>UnhandledExceptionsWindow.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="..\..\SharedClasses\WpfNotificationWindow.xaml">
       <Link>WpfNotificationWindow.xaml</Link>
       <Generator>MSBuild:Compile</Generator>

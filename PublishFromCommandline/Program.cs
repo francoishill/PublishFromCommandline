@@ -28,15 +28,16 @@ class Program
 	private const StringComparison culture = StringComparison.InvariantCultureIgnoreCase;
 	static int Main(string[] args)
 	{
-		
+		SharedClasses.AutoUpdating.CheckForUpdates_ExceptionHandler();
+
 		string outputfile = null;
 
-		while (true)
-		{
-			onFeedback("Time: " + DateTime.Now.ToString("HH:mm:ss"));
-			Thread.Sleep(500);
-		}
-		return 0;
+		//while (true)
+		//{
+		//    onFeedback("Time: " + DateTime.Now.ToString("HH:mm:ss"));
+		//    Thread.Sleep(500);
+		//}
+		//return 0;
 
 		try
 		{
@@ -84,7 +85,7 @@ class Program
 					publishedSetupPath: out tmpNoUseSetupPath,
 					actionOnMessage: (mes, msgtype) =>
 					{
-						onFeedback(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + msgtype + "} " + mes));
+						onFeedback("[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "]{" + msgtype + "} " + mes);
 						//feedbackList.Add(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + msgtype + "} " + mes));
 						//MiniDownloadBarForm.UpdateMessage(textfeedback.FeedbackText, "Last feedback:" + textfeedback.FeedbackText);
 					},
@@ -112,7 +113,7 @@ class Program
 					publishedSetupPath: out tmpNoUseSetupPath,
 					actionOnMessage: (mes, msgtype) =>
 					{
-						onFeedback(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + msgtype + "} " + mes));
+						onFeedback("[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "]{" + msgtype + "} " + mes);
 						//feedbackList.Add(DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]{" + msgtype + "} " + mes));
 						//MiniDownloadBarForm.UpdateMessage(textfeedback.FeedbackText, "Last feedback:" + textfeedback.FeedbackText);
 					},
