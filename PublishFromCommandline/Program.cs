@@ -70,6 +70,7 @@ class Program
 				//feedbackList.Add("Cannot publish, no appname specified (use command-line format app:\"my app name\")");
 			string tmpNoUserVersionString;
 			string tmpNoUseSetupPath;
+			DateTime publishedDate;
 			if (local)
 				PublishInterop.PerformPublish(
 					//VisualStudioInterop.PerformPublish(
@@ -83,6 +84,7 @@ class Program
 					SelectSetupIfSuccessful: selectsetup,
 					publishedVersionString: out tmpNoUserVersionString,
 					publishedSetupPath: out tmpNoUseSetupPath,
+					publishDate: out publishedDate,
 					actionOnMessage: (mes, msgtype) =>
 					{
 						onFeedback("[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "]{" + msgtype + "} " + mes);
@@ -111,6 +113,7 @@ class Program
 					OpenWebsite: openwebsite,
 					publishedVersionString: out tmpNoUserVersionString,
 					publishedSetupPath: out tmpNoUseSetupPath,
+					publishDate: out publishedDate,
 					actionOnMessage: (mes, msgtype) =>
 					{
 						onFeedback("[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "]{" + msgtype + "} " + mes);
