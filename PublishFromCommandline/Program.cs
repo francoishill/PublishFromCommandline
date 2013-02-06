@@ -76,7 +76,7 @@ class Program
 					//VisualStudioInterop.PerformPublish(
 					//null,
 					projName: appname,
-					_64Only: false,
+					/*_64Only: false,*/
 					HasPlugins: hasplugins,
 					AutomaticallyUpdateRevision: true,
 					InstallLocallyAfterSuccessfullNSIS: installlocal,
