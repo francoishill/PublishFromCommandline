@@ -75,11 +75,11 @@ class Program
 				PublishInterop.PerformPublish(
 					//VisualStudioInterop.PerformPublish(
 					//null,
-					projName: appname,
+					projToBuild: new VsBuildProject_NonAbstract(appname),
 					/*_64Only: false,*/
 					HasPlugins: hasplugins,
 					AutomaticallyUpdateRevision: true,
-					InstallLocallyAfterSuccessfullNSIS: installlocal,
+					InstallLocallyAfterSuccessfullNSIS_NullToNotRunAfterInstallingSilently: installlocal,
 					StartupWithWindows: loadonstartup,
 					SelectSetupIfSuccessful: selectsetup,
 					publishedVersionString: out tmpNoUserVersionString,
@@ -103,11 +103,11 @@ class Program
 				PublishInterop.PerformPublishOnline(
 				//VisualStudioInterop.PerformPublishOnline(
 					//null,
-					projName: appname,
+					projToBuild: new VsBuildProject_NonAbstract(appname),
 					_64Only: false,
 					HasPlugins: hasplugins,
 					AutomaticallyUpdateRevision: true,
-					InstallLocallyAfterSuccessfullNSIS: installlocal,
+					InstallLocallyAfterSuccessfullNSIS_NullToNotRunAfterInstallingSilently: installlocal,
 					StartupWithWindows: loadonstartup,
 					SelectSetupIfSuccessful: selectsetup,
 					OpenWebsite: openwebsite,
